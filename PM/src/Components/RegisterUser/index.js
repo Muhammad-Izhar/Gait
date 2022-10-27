@@ -136,7 +136,7 @@ const RegisterUser = () => {
                 required
               />
             </div>
-            <div className={style.firstinputdiv}>
+            {/* <div className={style.firstinputdiv}>
               <label htmlFor="hospitalname" className={style.label}>
                 Hospital Name
               </label>
@@ -148,8 +148,8 @@ const RegisterUser = () => {
                 className={style.input}
                 required
               />
-            </div>
-            <div className={style.firstinputdiv}>
+            </div> */}
+            {/* <div className={style.firstinputdiv}>
               <label htmlFor="countryname" className={style.label}>
                 Country Name
               </label>
@@ -161,7 +161,7 @@ const RegisterUser = () => {
                 className={style.input}
                 required
               />
-            </div>
+            </div> */}
           </div>
           <div className={style.buttondiv}>
             <button className={style.button}>Register</button>
