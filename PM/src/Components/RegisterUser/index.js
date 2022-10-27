@@ -1,16 +1,12 @@
 import React from "react";
-// import { ReactDOM } from "react";
-
-import ReactDOM from "react-dom";
 import Navbar from "../Common/Navbar";
 import style from "./style";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 
-const RegisterUser = () => {
+const RegisterUser = (props) => {
   const [classAdd, setClassAdd] = useState(null);
-  const [isBackdrop, setIsBackdrop] = useState(false);
-  const [isModal, setIsModal] = useState(false);
+  const [addModal, setAddModal] = useState(false);
   const name = useRef();
   const email = useRef();
   const password = useRef();
@@ -19,10 +15,7 @@ const RegisterUser = () => {
   const hospital = useRef();
   const navigate = useNavigate();
   const register = "Register";
-  const backdropClikHandler = () => {
-    setIsBackdrop(false);
-    setIsModal(false);
-  };
+
   //   const acknowlodge = (e) => {
   //     e.preventDefault;
   //     alert("register successfully");
@@ -42,41 +35,17 @@ const RegisterUser = () => {
       userAcknoledgement.password.trim() !== userAcknoledgement.conf_pass.trim()
     ) {
       setClassAdd(style.warrning);
-      setIsModal(true);
-      setIsBackdrop(true);
+      setAddModal(true);
 
+      props.onAddModal(addModal);
       return;
     }
     console.log(userAcknoledgement);
     alert("register successfully!");
     navigate("/login");
   };
-
-  const Bacdrop = () => {
-    return ReactDOM.createPortal(
-      <div className={style.backdrop} />,
-      document.getElementById("overlay")
-    );
-  };
-  const Modal = (props) => {
-    return ReactDOM.createPortal(
-      <div className={style.modal}>{props.children}</div>,
-      document.getElementById("modal")
-    );
-  };
   return (
     <>
-      {isBackdrop && <Bacdrop onClik={backdropClikHandler} />}
-
-      {isModal && (
-        <Modal>
-          <h1 className={style.heading}>Oops!</h1>
-          <div>Password are not matching.</div>
-          <button className={style.modalBtn} onClik={backdropClikHandler}>
-            Ok
-          </button>
-        </Modal>
-      )}
       <Navbar text={register} />
       <div className={style.main}>
         <form className={style.container} onSubmit={submitHandler}>
@@ -162,7 +131,6 @@ const RegisterUser = () => {
                 required
               />
             </div>
-            
           </div>
           <div className={style.buttondiv}>
             <button className={style.button}>Register</button>

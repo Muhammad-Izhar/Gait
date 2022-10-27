@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/authContext";
 import style from "./style";
 import { useEffect } from "react";
@@ -110,9 +110,9 @@ function Login() {
           </label>
         </div>
         <div>
-          <a href="/home" className="font-semibold">
+          <Link to="/forgotpassword" className="font-semibold">
             Forgot Password?
-          </a>
+          </Link>
         </div>
       </div>
 
