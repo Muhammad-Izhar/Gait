@@ -162,6 +162,7 @@ const RegisterUser = () => {
                 required
               />
             </div> */}
+            
           </div>
           <div className={style.buttondiv}>
             <button className={style.button}>Register</button>
